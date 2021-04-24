@@ -6,3 +6,4 @@ const notes = require('./apiRoutes');
 router.use(apiRoutes);
 
 module.exports = router
+
