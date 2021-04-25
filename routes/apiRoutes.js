@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const router = require('express').Router();
-const { createNewNote } = require('../lib/notes.js');
+const { createNewNote, noteDelete } = require('../lib/notes.js');
 
 const notes = require('../db/db.json');
 console.log(notes);
@@ -20,6 +20,16 @@ router.post('/notes', (req, res) => {
     res.json(Note) 
 });
 
+router.delete('/notes/:id', (req, res) => {
+    const result = noteDelete(req.params.id, notes);
+    if (result) {
+        res.json(result);
+    } else {
+        res.sendStatus(400);
+        //res.send('error')
+    }
+})
+
 // router.post('/notes', (req, res) => {
 //     // set id based on what the next index of the array will be
 //     req.body.id = notes.length.toString();
@@ -31,6 +41,8 @@ router.post('/notes', (req, res) => {
 //       res.json(Note);
 //     }
 //   });
+
+
 
 module.exports = router
 
