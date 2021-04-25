@@ -4,9 +4,10 @@ const router = require('express').Router();
 const { createNewNote } = require('../lib/notes.js');
 
 const notes = require('../db/db.json');
-//console.log(notes);
+console.log(notes);
 
 router.get('/notes', (req, res) => {
+   
     let results = notes
     console.log(results)
     res.json(results)
@@ -15,7 +16,7 @@ router.get('/notes', (req, res) => {
 
 router.post('/notes', (req, res) => {
     let Note = createNewNote(req.body, notes)
-    console.log(createNewNote)
+    console.log(Note)
     res.json(Note) 
 });
 

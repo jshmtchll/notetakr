@@ -18,8 +18,9 @@ app.use(express.static("public"));
 
 
 //requires routes //
-app.use('/', htmlRoutes);
+
 app.use('/api', apiRoutes);
+app.use('/', htmlRoutes);
 
 
 
